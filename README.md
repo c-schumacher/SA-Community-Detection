@@ -1,2 +1,2 @@
-# SA-Community-Detection
+# Simulated Annealing-CommunityDetection
 Simulated annealing approach to biologically constrained community detection
