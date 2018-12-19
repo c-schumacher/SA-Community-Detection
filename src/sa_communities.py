@@ -2,7 +2,7 @@ import numpy as np
 import random
 import math
 
-def sa_communities(G, runs=1, temp=1000, cooling_rate=0.01, min_steps=100, reset=5, constant=1, verbose=False):
+def sa_communities(G, runs=1, temp=1000, cooling_rate=0.01, min_steps=100, reset=5, constant=1, updates=False):
     def modularity(G, C):
         delta = np.equal.outer(C, C)
         Q_val = (G - mod_Si*mod_Sj/W) * delta/W
@@ -64,7 +64,7 @@ def sa_communities(G, runs=1, temp=1000, cooling_rate=0.01, min_steps=100, reset
         max_Q = Q
         T = temp
        
-        if verbose:
+        if updates:
             print "Starting temperature:", T
         while T > 1:
             u = random.uniform(0,1)
@@ -85,7 +85,7 @@ def sa_communities(G, runs=1, temp=1000, cooling_rate=0.01, min_steps=100, reset
                     Q = max_Q
                     c = max_c
             T *= 1 - cooling_rate 
-            if verbose:
+            if updates:
                 print "Temperature={0:.3f} and Q={1:.5f}".format(T, Q)     
         tmp = modularity(G, max_c)
         if tmp > best_Q:
