@@ -2,7 +2,7 @@ import numpy as np
 import random
 import math
 
-def sa_communities(G, runs=1, temp=100, cooling_rate=0.01, min_steps=100, reset=5, constant=1, updates=False):
+def cluster_annealing(G, runs=1, temp=100, cooling_rate=0.01, min_steps=100, reset=5, constant=1, updates=False):
     def modularity(G, C):
         delta = np.equal.outer(C, C)
         Q_val = (G - mod_Si*mod_Sj/W) * delta/W
